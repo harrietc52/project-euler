@@ -5,3 +5,5 @@ Working through [Project Euler](https://projecteuler.net/) problems to gain expe
 ## Completed
 
 1. [Multiples of 3 or 5](multiples_of_3_or_5/solution.py) ([link](https://projecteuler.net/problem=1))
+2. [Even Fibonacci numbers](fib/solution.py) ([link](https://projecteuler.net/problem=2))
+
