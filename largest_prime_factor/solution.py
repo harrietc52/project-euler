@@ -7,26 +7,30 @@
 # Calculating for 13195 works, however calculating for the requested 600851475143
 # is too computationally heavy, and times out.
 
+# NUMBER = 35
 NUMBER = 13195 # Prime Factors are [5, 7, 13, 29]
 # NUMBER = 600851475143
 
 # Prime numbers are only divisible by 1 and itself
 def calculate_prime_numbers(highest_number):
 
-    # Start with a list of numbers up to a certain limit.
-    list_of_possible_prime_numbers = list(range(2, highest_number+1))
+    list_of_possible_prime_numbers = []
 
-    # Eliminate multiples of each prime number
-    for item in list_of_possible_prime_numbers:
-        for x in list_of_possible_prime_numbers:
-            result = x/ item
-            divisibe_by_two = (result == int(result))
-            if (divisibe_by_two):
-                if x != item:
-                    list_of_possible_prime_numbers.remove(x)
+    if highest_number >= 2:
+        list_of_possible_prime_numbers.append(2)
+
+    for item in range(3, highest_number+1):
+        if item % 2 == 0:
+            continue
+
+        for x in range(3, item):
+            is_x_a_factor = (item % x == 0)
+
+            if (is_x_a_factor):
+                if x not in list_of_possible_prime_numbers:
+                    list_of_possible_prime_numbers.append(x)
 
     return list_of_possible_prime_numbers
-
 
 
 def find_prime_factors(prime_numbers):
@@ -44,13 +48,19 @@ def find_prime_factors(prime_numbers):
     return prime_factors
 
 
+def calculate_square_root():
+    # ** is to the power of
+    sqareroot = int(NUMBER**0.5)
+    return sqareroot
+
+
 def largest_prime_factor():
-    # Divide number by 2, to get number to calculate prime numbers to up
-    highest_number = int(NUMBER / 2)
+    highest_number = calculate_square_root()
 
     prime_numbers = calculate_prime_numbers(highest_number)
 
     prime_factors_list = find_prime_factors(prime_numbers)
+
     print(prime_factors_list)
 
 
